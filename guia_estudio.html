@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Estudio y Defensa - BuscaYa Android</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-light: #1E293B;
+            --accent: #2563EB;
+            --accent-light: #EFF6FF;
+            --android-green: #3DDC84;
+            --yellow-buscaya: #FFD23F;
+            --text-main: #334155;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
+            --bg-light: #F8FAFC;
+            --border-color: #E2E8F0;
+            --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Principal */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1E3A8A 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: rgba(37, 99, 235, 0.2);
+            border-radius: 50%;
+            filter: blur(50px);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge-android {
+            background-color: rgba(61, 220, 132, 0.15);
+            color: var(--android-green);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 16px;
+            border: 1px solid rgba(61, 220, 132, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 38px;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: #94A3B8;
+            font-size: 18px;
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 20px;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #CBD5E1;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .meta-item strong {
+            color: white;
+        }
+
+        /* Secciones */
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--bg-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+
+        /* Ficha Técnica */
+        .grid-tech {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .tech-box {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tech-box h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tech-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tech-box li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .tech-box li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 18px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Arquitectura MVVM */
+        .mvvm-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 25px 0;
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .mvvm-node {
+            background: white;
+            border: 2px solid var(--primary-light);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .mvvm-node.view { border-color: var(--android-green); }
+        .mvvm-node.viewmodel { border-color: var(--accent); }
+        .mvvm-node.model-repo { border-color: #8B5CF6; }
+
+        .mvvm-node h4 {
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
+        .mvvm-node p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .mvvm-arrow {
+            text-align: center;
+            font-size: 20px;
+            color: var(--text-muted);
+            font-weight: bold;
+        }
+
+        /* Código / Explicación Técnica */
+        .code-explanation {
+            background: #1E293B;
+            color: #F8FAFC;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid var(--android-green);
+        }
+
+        /* FAQ y Preguntas de Examen */
+        .faq-item {
+            margin-bottom: 20px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .faq-question span {
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--text-main);
+            padding-left: 24px;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .tip-box {
+            background: #FFFBEB;
+            border: 1px solid #FEF3C7;
+            color: #92400E;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Impresión y PDF */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+                font-size: 12pt;
+            }
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            header {
+                background: none;
+                color: black;
+                border: 1px solid black;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 20px 0;
+                margin-bottom: 30px;
+            }
+            header h1, header p, .meta-info, .meta-item strong {
+                color: black !important;
+            }
+            .section-card {
+                box-shadow: none !important;
+                border: none;
+                border-bottom: 1px solid #ccc;
+                padding: 20px 0;
+                page-break-inside: avoid;
+            }
+            .tech-box {
+                border: 1px solid #ccc;
+                background: none;
+            }
+            .mvvm-node {
+                border: 1px solid black !important;
+                box-shadow: none !important;
+            }
+            .code-explanation {
+                background: #f1f5f9;
+                color: #000;
+                border: 1px solid #ccc;
+            }
+            .faq-item {
+                background: none;
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+            .btn-print {
+                display: none;
+            }
+        }
+
+        /* Botón Flotante para Imprimir */
+        .btn-print {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-print" onclick="window.print()">
+        🖨️ Guardar / Imprimir PDF
+    </button>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="header-content">
+                <span class="badge-android">Android App</span>
+                <h1>Guía de Defensa: App BuscaYa</h1>
+                <p>Resumen técnico, arquitectura, componentes y respuestas clave para la defensa del parcial de programación móvil.</p>
+                <div class="meta-info">
+                    <div class="meta-item">Proyecto: <strong>BuscaYa</strong></div>
+                    <div class="meta-item">Plataforma: <strong>Android (Kotlin)</strong></div>
+                    <div class="meta-item">Localidad: <strong>Villa del Rosario</strong></div>
+                    <div class="meta-item">Paradigma: <strong>Declarativo (Compose)</strong></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 1. INTRODUCCIÓN Y ARQUITECTURA -->
+        <section class="section-card">
+            <h2 class="section-title">1. Resumen de la Aplicación</h2>
+            <p><strong>BuscaYa</strong> es una aplicación móvil nativa diseñada para centralizar búsquedas locales en la ciudad de <strong>Villa del Rosario</strong>. Su funcionalidad base consiste en:</p>
+            <br>
+            <ul>
+                <li>Visualizar farmacias de turno en tiempo real en la pantalla principal.</li>
+                <li>Realizar búsquedas dinámicas de comercios y productos mediante un buscador inteligente que consume un motor de búsqueda híbrida.</li>
+                <li>Visualizar detalles completos de farmacias y resultados de búsqueda (dirección, teléfono, imágenes, horarios, etc.).</li>
+            </ul>
+        </section>
+
+        <!-- 2. ARQUITECTURA DETALLADA -->
+        <section class="section-card">
+            <h2 class="section-title">2. Arquitectura de Software: MVVM</h2>
+            <p>La aplicación implementa el patrón de arquitectura recomendado por Google: <strong>MVVM (Model-View-ViewModel)</strong>, el cual promueve la separación de responsabilidades, la facilidad de mantenimiento y la testeabilidad de la app.</p>
+            
+            <div class="mvvm-diagram">
+                <div class="mvvm-node view">
+                    <h4>VISTA (UI) - Jetpack Compose</h4>
+                    <p><code>MainActivity</code>, <code>FarmaciaScreen</code>, <code>PharmacyListItem</code></p>
+                    <p>Dibuja la UI reactivamente según el estado expuesto por el ViewModel.</p>
+                </div>
+                <div class="mvvm-arrow">↑ Observa el Estado / Emite Eventos ↓</div>
+                <div class="mvvm-node viewmodel">
+                    <h4>VIEWMODEL - FarmaciaViewModel</h4>
+                    <p><code>FarmaciaViewModel.kt</code></p>
+                    <p>Expone el estado de la UI como <code>StateFlow</code>. Lanza Corrutinas en <code>viewModelScope</code>.</p>
+                </div>
+                <div class="mvvm-arrow">↑ Solicita Datos / Retorna Resultados ↓</div>
+                <div class="mvvm-node model-repo">
+                    <h4>MODELO Y CAPA DE DATOS (Repositories & Retrofit)</h4>
+                    <p><code>FarmaciaRepository</code>, <code>SearchRepository</code>, <code>RetrofitInstance</code></p>
+                    <p>Representa las entidades (<code>Farmacia</code>, <code>SearchResult</code>) y la lógica para consumir la API externa.</p>
+                </div>
+            </div>
+
+            <h3>Desglose de la Implementación:</h3>
+            <br>
+            <p><strong>1. View (Vista):</strong> Escrita usando <strong>Jetpack Compose</strong>. La interfaz principal es <code>FarmaciaScreen</code>. Mediante <code>collectAsState()</code>, la UI se suscribe a los flujos de estado del ViewModel (como <code>farmacias</code>, <code>searchResults</code>, <code>isLoading</code>). Cuando el estado cambia, la UI se **recompone** automáticamente.</p>
+            <br>
+            <p><strong>2. ViewModel:</strong> <code>FarmaciaViewModel</code> hereda de <code>ViewModel</code> de Android Jetpack. Sirve como puente entre los datos y la vista. Mantiene las variables de estado privadas (<code>MutableStateFlow</code>) y expone versiones de solo lectura (<code>StateFlow</code>) para proteger la integridad del estado.</p>
+            <br>
+            <p><strong>3. Model (Modelo) & Data Source:</strong> Representado por las clases de datos de Kotlin (<code>Farmacia</code> y <code>SearchResult</code>) anotadas con <code>@SerializedName</code> para mapear las propiedades JSON automáticamente usando GSON.</p>
+        </section>
+
+        <!-- 3. TECNOLOGÍAS UTIlIZADAS -->
+        <section class="section-card">
+            <h2 class="section-title">3. Stack Tecnológico</h2>
+            <div class="grid-tech">
+                <div class="tech-box">
+                    <h4>Kotlin</h4>
+                    <ul>
+                        <li>Lenguaje de programación nativo y moderno oficial para Android.</li>
+                        <li>Tipado estático, seguro contra nulos (Null-safety).</li>
+                    </ul>
+                </div>
+                <div class="tech-box">
+                    <h4>Jetpack Compose (M3)</h4>
+                    <ul>
+                        <li>UI declarativa nativa moderna.</li>
+                        <li>Material Design 3 (M3) para un look premium.</li>
+                        <li>Gestión de estado simplificada en Compose.</li>
+                    </ul>
+                </div>
+                <div class="tech-box">
+                    <h4>Retrofit & GSON</h4>
+                    <ul>
+                        <li>Cliente HTTP type-safe para peticiones de red.</li>
+                        <li>Custom Gson Deserializer para manejar formatos de JSON dinámicos y resilientes.</li>
+                    </ul>
+                </div>
+                <div class="tech-box">
+                    <h4>Kotlin Coroutines & Flow</h4>
+                    <ul>
+                        <li>Programación asincrónica estructurada.</li>
+                        <li>Uso de <code>suspend fun</code> para no bloquear el hilo principal (UI thread).</li>
+                        <li><code>StateFlow</code> para flujos reactivos de estado.</li>
+                    </ul>
+                </div>
+                <div class="tech-box">
+                    <h4>Coil (Compose-Coil)</h4>
+                    <ul>
+                        <li>Biblioteca moderna de carga de imágenes.</li>
+                        <li>Carga asincrónica de imágenes desde URLs remotas (HTTP) optimizada y rápida.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FLUJO DE FUNCIONAMIENTO INTERNO -->
+        <section class="section-card">
+            <h2 class="section-title">4. ¿Cómo funciona la App? (Flujo de Datos)</h2>
+            <p>Es vital que describas el flujo paso a paso si el profesor te pide explicar qué ocurre tras bambalinas:</p>
+            <br>
+            <ol style="padding-left: 20px;">
+                <li style="margin-bottom: 12px;">
+                    <strong>Inicio de la App:</strong>
+                    <ul>
+                        <li><code>MainActivity</code> ejecuta <code>enableEdgeToEdge()</code> para expandir la UI debajo de las barras de estado del sistema.</li>
+                        <li>Establece el contenido principal renderizando <code>BuscayaTheme</code> y <code>FarmaciaScreen()</code>.</li>
+                        <li>Se instancia el <code>FarmaciaViewModel</code> mediante delegación de Compose.</li>
+                    </ul>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong>Carga Inicial de Farmacias (GET /api/farmacias_turno_android):</strong>
+                    <ul>
+                        <li>Un bloque <code>LaunchedEffect(Unit)</code> en <code>FarmaciaScreen</code> se dispara una única vez al entrar a la pantalla, llamando a <code>viewModel.obtenerFarmacias()</code>.</li>
+                        <li>El ViewModel cambia el estado <code>_isLoading.value = true</code> y arranca una corrutina (<code>viewModelScope.launch</code>).</li>
+                        <li>Llama al método <code>getFarmaciasEnTurno()</code> del Repositorio.</li>
+                        <li>El repositorio consume la API usando <strong>Retrofit</strong> (<code>RetrofitInstance.api.getFarmaciasEnTurno()</code>).</li>
+                        <li>El JSON devuelto se procesa en el deserializador customizado <code>FarmaciaListDeserializer</code>. Este busca si el JSON es un Array directo o si tiene el campo clave "farmacias", "results" o "data" para extraer la lista de forma robusta.</li>
+                        <li>El repositorio retorna la lista parseada de objetos <code>Farmacia</code>. El ViewModel guarda esta lista en <code>_farmacias.value</code> y pone <code>_isLoading.value = false</code>.</li>
+                        <li>La UI de Compose reacciona a los cambios en el flujo de estado y dibuja las tarjetas en el <code>LazyColumn</code> de farmacias.</li>
+                    </ul>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong>Búsqueda Inteligente (GET /api/hybrid-search-android?q=query):</strong>
+                    <ul>
+                        <li>El usuario escribe en el input y presiona "Buscar" en el teclado virtual (evento <code>onSearch</code> / <code>ImeAction.Search</code>).</li>
+                        <li>Se dispara <code>viewModel.buscarLocales(searchQuery)</code>.</li>
+                        <li>Se ejecuta una corrutina que invoca a <code>SearchRepository.hybridSearch(query)</code>.</li>
+                        <li>La API devuelve una lista de <code>SearchResult</code> que se almacena en <code>_searchResults.value</code>.</li>
+                        <li>Compose recompone la pantalla mostrando los resultados en la sección superior sobre un fondo que facilita su lectura.</li>
+                    </ul>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong>Visualización del Detalle:</strong>
+                    <ul>
+                        <li>Al presionar en un comercio buscado o una farmacia, se actualizan las variables locales de estado en Compose (<code>selectedSearchResult</code> o <code>selectedFarmacia</code>).</li>
+                        <li>Esto despliega de inmediato un cuadro de diálogo detallado (<code>Dialog</code> o <code>AlertDialog</code>) con información enriquecida, incluyendo mapa conceptual o foto usando Coil.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <!-- 5. PREGUNTAS CLAVE DEL PARCIAL -->
+        <section class="section-card">
+            <h2 class="section-title">5. Banco de Preguntas para el Examen (Frecuentes)</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question"><span>P1:</span> ¿Por qué usas corrutinas en lugar de llamar a la API directamente en el hilo de la UI?</div>
+                <div class="faq-answer">
+                    Llamar a un endpoint HTTP es una operación bloqueante y lenta. Si lo hiciéramos en el hilo principal de la UI (Main Thread), la aplicación se congelaría e incluso Android lanzaría una excepción <code>NetworkOnMainThreadException</code>. Las Corrutinas permiten ejecutar tareas en segundo plano usando un hilo optimizado para E/S (como <code>Dispatchers.IO</code> internamente en Retrofit) de forma asíncrona, manteniendo la UI fluida.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question"><span>P2:</span> ¿Qué es Jetpack Compose y cuál es la diferencia con el sistema de vistas tradicional (XML)?</div>
+                <div class="faq-answer">
+                    Jetpack Compose es un kit de herramientas moderno de tipo <strong>declarativo</strong>. En XML describimos una jerarquía estática de vistas y debemos mutarla manualmente usando referencias en el código (como <code>findViewById</code> o binding). En Compose, en cambio, describimos la interfaz de usuario en función de un <strong>estado</strong> actual. Si el estado cambia, la UI se recompone automáticamente. No manipulamos los widgets directamente, sino que cambiamos el estado.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question"><span>P3:</span> ¿Por qué es necesario un deserializador personalizado (FarmaciaListDeserializer)?</div>
+                <div class="faq-answer">
+                    La API externa a la cual consumimos puede variar su formato de respuesta (por ejemplo, a veces devuelve directamente un array JSON <code>[...]</code> y otras veces devuelve un objeto con un array dentro de un campo como <code>{"farmacias": [...]}</code> o <code>{"data": [...]}</code>). El deserializador personalizado intercepta la lectura de Gson y valida dinámicamente el formato para extraer los datos correctos sin que la app falle.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question"><span>P4:</span> ¿Qué son StateFlow y MutableStateFlow y por qué se usan en el ViewModel?</div>
+                <div class="faq-answer">
+                    <code>MutableStateFlow</code> es un contenedor de estado de la biblioteca de Corrutinas que siempre retiene el último valor y emite actualizaciones a sus suscriptores. Usamos <code>StateFlow</code> (de solo lectura) expuesto públicamente para asegurar que la vista no modifique el estado directamente, respetando el flujo unidireccional de datos (UDF - Unidirectional Data Flow). La vista solo interactúa llamando a funciones públicas del ViewModel.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question"><span>P5:</span> ¿Cómo funciona Coil para cargar imágenes?</div>
+                <div class="faq-answer">
+                    Coil (Coroutine Image Loader) está construido nativamente para Kotlin y optimizado para Compose. Cuando usamos el componente composable <code>AsyncImage</code>, Coil toma la URL de la imagen, descarga los datos de forma asíncrona utilizando corrutinas, los decodifica, gestiona la caché en memoria y almacenamiento para no re-descargarla la próxima vez, y los dibuja en pantalla de forma fluida.
+                </div>
+            </div>
+            
+            <div class="tip-box">
+                💡 <strong>CONSEJO PARA MAÑANA:</strong> Si el profesor pregunta qué agregaste o modificaste recientemente, menciona la separación de las Farmacias de Turno fijas (para que siempre estén visibles al usuario) de la sección superior que maneja las búsquedas dinámicas de comercios y farmacias. Esto mejoró significativamente la experiencia del usuario final.
+            </div>
+        </section>
+
+        <!-- 6. TIPS DE DEFENSA -->
+        <section class="section-card">
+            <h2 class="section-title">6. Consejos Prácticos para la Defensa</h2>
+            <ul style="padding-left: 20px; font-size: 14px;">
+                <li style="margin-bottom: 8px;"><strong>Seguridad al hablar:</strong> Enfatiza que estás usando <strong>buenas prácticas de desarrollo moderno de Android</strong> (Kotlin moderno, UI declarativa en Compose, arquitectura MVVM limpia). Esto le encanta a los profesores de universidad.</li>
+                <li style="margin-bottom: 8px;"><strong>Flujo Unidireccional de Datos (UDF):</strong> Si te piden dibujar o explicar cómo se conectan las partes, usa esta idea: <em>"Los datos fluyen hacia abajo (ViewModel -> UI en forma de estado) y los eventos fluyen hacia arriba (UI -> ViewModel en forma de llamadas a funciones)"</em>.</li>
+                <li style="margin-bottom: 8px;"><strong>Resiliencia:</strong> Explica que la app maneja errores con bloques <code>try-catch</code> y estados de error explícitos que se muestran de forma amigable al usuario en lugar de colgarse ("crashear").</li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
